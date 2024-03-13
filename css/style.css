@@ -41,13 +41,12 @@ body {
 .nav {
     background-color: rgb(247, 250, 252);
     top: 0;
+    position: sticky;
+    width: 100%;
+    z-index: 6;
 }
 
-.navbar-fixed {
-    position: fixed;
-    width: 100%;
-    z-index: 3;
-}
+
 
 /*  desktop-view */
 .desktop-view {
@@ -139,14 +138,16 @@ body {
 
 .account h3 {
     border: 1px solid #bbbbbb;
-    padding: .3rem .2rem;
+    padding: .3rem .5rem;
     border-radius: 5px;
     margin-left: .5rem;
+    box-shadow: var(--light-shadow);
+
 }
 
 .account a,
 .account h3 {
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: 500;
 
 }
@@ -156,14 +157,9 @@ body {
 }
 
 .link-nav {
-    display: grid;
-    grid-template-columns: auto auto;
-
-}
-
-.link-nav .selection {
-    justify-self: end;
-    margin-right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .links {
@@ -172,6 +168,7 @@ body {
     justify-content: start;
     margin-top: 0;
     align-items: center;
+    margin-bottom: .5rem;
 }
 
 .links li {
@@ -181,9 +178,9 @@ body {
 }
 
 .links li a {
-    color: black;
+    color: var(--font-color);
     text-decoration: none;
-    font-size: .8rem;
+    font-size: .9rem;
     font-weight: 500;
 }
 
@@ -191,15 +188,17 @@ body {
     color: var(--clr-primary-1) !important;
     position: relative;
 
+
 }
 
 .active::after {
+    transition: 1s;
     position: absolute;
     content: "";
     border-bottom: 1px solid var(--clr-primary-1);
     width: 100%;
     border-width: 2px;
-    bottom: -1.71rem;
+    bottom: -.8rem;
     left: 0;
 
 }
@@ -217,7 +216,7 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    padding: 0 3rem;
+    padding-right: 1.6rem;
 }
 
 .selection>* {
@@ -231,8 +230,8 @@ body {
     position: absolute;
     width: 1rem;
     right: 0;
-    bottom: .1rem;
-    font-size: 1.2rem;
+    bottom: .2rem;
+    font-size: 1rem;
     transition: .5s;
 }
 
@@ -240,6 +239,7 @@ body {
     transform: rotateZ(180deg);
 }
 
+/* selction*/
 .list-1,
 .list-2 {
     position: relative;
@@ -251,16 +251,20 @@ body {
     position: absolute;
 }
 
+.list2 {
+    transform: translateX(-80%);
+}
+
 .list1 ul,
 .list2 ul {
     list-style-type: none;
-    padding: 0 4rem 0 .5rem;
+    padding: 0 2.5rem 0 .5rem;
     text-decoration: none;
     border: 1px solid #e2e2e2;
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: var(--light-shadow);
-    width: 80%;
+    width: 100%;
 
 }
 
@@ -291,7 +295,7 @@ body {
     background-color: transparent;
     font-size: .8rem;
     color: var(--font-color);
-
+    padding-right: 0;
 }
 
 /* end desktop-view */
@@ -349,35 +353,22 @@ body {
 
 .sidebar-navbar {
     position: fixed;
+
+
     bottom: 0;
     left: 0;
     width: 100%;
     height: 95%;
     background: white;
 
-    display: grid;
-    transform: translateX(-100%);
+    transform: translateX(-300%);
     transition: 1s;
+
+    display: grid;
 }
 
 .show-sidebar {
     transform: translateX(0);
-}
-
-.close-btn {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    font-size: 3rem;
-    background: transparent;
-    border: transparent;
-    color: #bb2525;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.close-btn:hover {
-    color: #e66b6b;
 }
 
 .search-box .side-input {
@@ -423,14 +414,13 @@ body {
     font-size: 2rem;
     margin-bottom: .5rem;
     color: black;
+    font-weight: bold;
 
 }
 
 .info h1 {
     font-size: 2rem;
-
     color: black;
-
 }
 
 #info {
@@ -441,19 +431,20 @@ body {
 .Description p {
     font-size: 1rem;
     line-height: 1.7rem;
-    max-width: 80%;
+    max-width: 100%;
 }
 
 .Description span {
     color: var(--clr-primary-1);
     cursor: pointer;
+    font-weight: 500;
 }
 
 /* end hero */
 
 /* card */
 .section-cards {
-    padding: 2rem;
+    padding: .5rem 2rem;
 }
 
 .title {
@@ -465,8 +456,10 @@ body {
 .card {
     border: 1px solid #e2e2e2;
     margin: 1.5rem 0;
-    padding: 1rem .5rem;
+    padding: .7rem .9rem;
     border-radius: 4px;
+    text-align: left;
+
 
 
 }
@@ -497,21 +490,42 @@ body {
         -moz-column-gap: 1.1rem;
         column-gap: 1.1rem;
     }
+
+    .Description p {
+        max-width: 70%;
+    }
+
 }
+
+@media screen and (min-width:1150px) {
+    .container-card {
+        width: 85%;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(250px, 33%));
+        -moz-column-gap: 1.2rem;
+        column-gap: 1.2rem;
+    }
+
+    .Description p {
+        max-width: 80%;
+    }
+
+}
+
 
 /* end card */
 
 
 /* footer*/
 .footer {
-    padding: .5rem;
+    padding: .5rem 1.3rem;
 }
 
 .question {
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0 .7rem;
     flex: 0 0 calc(50% - 1rem);
     border-bottom: 1px solid #e2e2e2;
 }
@@ -631,11 +645,6 @@ body {
     margin-top: 1rem;
 }
 
-.flag .bi-flag {
-    margin-right: .5rem;
-
-}
-
 .mark {
     display: none;
 }
@@ -665,34 +674,56 @@ body {
 
 .sidebar {
     display: none;
-    height: 51rem;
-    min-width: 16rem;
+    height: 87vh;
+    min-width: 17rem;
     font-size: .9rem;
-    background: #f7f8fa;
-    border: 1px solid #ddd;
-    padding: .5rem;
-
+    background: transparent;
+    padding: .6rem;
+    top: 7.5rem;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 0;
 }
 
 .cards {
     overflow-y: scroll;
     border-bottom: 1px solid #e2e2e2;
+
 }
 
-.sidebar-fixed {
-    position: -webkit-sticky;
-    position: sticky;
-    z-index: 0;
-    top: 8.4rem;
-}
+
 
 .sidebar-card {
     border-bottom: 1px solid #e2e2e2;
+    position: relative;
 }
-
+.last-child {
+    border-bottom:none;
+  
+}
 .sidebar-card h2 {
     font-size: .9rem;
     font-weight: 500;
+    margin-left: .2rem;
+}
+
+.sidebar-card {
+    cursor: pointer;
+}
+
+.sidebar-card h3 {
+    margin-left: 1.2rem;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.icon-sidebar {
+    border-right: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
+    bottom: 0;
+    position: sticky;
+    background-color: #fff;
+   
 }
 
 .links-sidebar {
@@ -700,8 +731,10 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: start;
-    height: 2rem;
-    padding-top: .8rem;
+    height: 3rem;
+    padding: .8rem 0 .3rem;
+
+
 }
 
 .links-sidebar a:hover {
@@ -709,6 +742,7 @@ body {
 }
 
 .links-sidebar li a {
+    cursor: pointer;
     padding: .5rem;
     color: var(--font-color);
 }
@@ -717,7 +751,7 @@ body {
 @media screen and (min-width:1000px) {
     .container {
         display: flex;
-        flex: 0 0 50%;
+        flex: 1 1 50%;
         justify-content: space-between;
     }
 
@@ -726,8 +760,10 @@ body {
         flex-direction: column;
         padding-top: 0;
         padding-bottom: 0;
+    }
 
-
+    .section {
+        max-width: 72vw;
     }
 
     .icon-footer {

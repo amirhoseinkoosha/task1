@@ -31,15 +31,15 @@ links.forEach(link => {
     });
 });
 
-window.addEventListener("scroll", function () {
-    if (window.scrollY > 80) {
-        navbar.classList.add("navbar-fixed");
-        sidebar.classList.add("sidebar-fixed");
-    } else {
-        navbar.classList.remove("navbar-fixed");
-        sidebar.classList.add("sidebar-fixed");
-    }
-});
+// window.addEventListener("scroll", function () {
+//     if (window.scrollY >= 10) {
+//         navbar.classList.add("navbar-fixed");
+//         sidebar.classList.add("sidebar-fixed");
+//     } else {
+//         navbar.classList.remove("navbar-fixed");
+//         sidebar.classList.add("sidebar-fixed");
+//     }
+// });
 
 navbar_side.addEventListener("click", function () {
     console.log(closeicon)
